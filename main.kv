@@ -1,0 +1,707 @@
+#:import Factory kivy.factory.Factory
+
+
+ScreenManager:
+    LoginScreen:
+    RegistrationScreen:
+
+<LoginScreen>:
+    name: 'login'
+
+    FloatLayout:
+
+        Image:
+            source: 'v640-peipei-09-modernbg.jpg'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: None, None
+            width: self.parent.width
+            height: self.parent.height
+        BoxLayout:
+            orientation: 'vertical'
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+            spacing: dp(10)
+            padding: dp(20)
+
+            Widget:
+
+
+            MDLabel:
+                text: "Welcome Back To Our Platform We Value You"
+                halign: 'center'
+
+
+            MDTextField:
+                hint_text: "Username/Email"
+                helper_text: "Enter your username"
+                helper_text_mode: "on_focus"
+
+
+            MDTextField:
+                hint_text: "Password"
+                helper_text: "Enter your password"
+                helper_text_mode: "on_focus"
+                password: True
+            Widget:
+                size_hint_y: 0.2
+
+            MDRaisedButton:
+                text: "Submit"
+                size_hint_x: 0.5
+                pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+                on_release: app.root.current = 'home'
+
+            MDLabel:
+                text: "Already have an account? [ref=register][color=#0000FF]Register[/color][/ref]"
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                halign: 'center'
+                valign: 'center'
+                markup: True
+                on_ref_press: app.register(args[1])
+
+            Widget:
+                size_hint_y: 1
+
+
+
+
+<RegistrationScreen>:
+    name: 'register'
+
+    FloatLayout:
+
+        Image:
+            source: 'v640-peipei-09-modernbg.jpg'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: None, None
+            width: self.parent.width
+            height: self.parent.height
+
+        BoxLayout:
+            orientation: 'vertical'
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+            spacing: dp(10)
+            padding: dp(20)
+
+
+            MDLabel:
+                text: "Welcome To Our Platform"
+                halign: 'center'
+
+            MDTextField:
+                hint_text: "Username"
+                helper_text: "Enter your Username"
+                helper_text_mode: "on_focus"
+
+            MDTextField:
+                hint_text: "First Name"
+                helper_text: "Enter your First Name"
+                helper_text_mode: "on_focus" 
+
+            MDTextField: 
+                hint_text: "Last Name"
+                helper_text: "Enter your Last Name"
+                helper_text_mode: "on_focus"
+
+            MDTextField:
+                hint_text: "Email"
+                helper_text: "Enter your Email"
+                helper_text_mode: "on_focus"
+
+            MDTextField:
+                hint_text: "Phone Number"
+                helper_text: "Enter your Phone Number"
+                helper_text_mode: "on_focus"
+
+            MDTextField:
+                hint_text: "Password"
+                helper_text: "Enter your Password"
+                helper_text_mode: "on_focus"
+                password: True
+
+            MDTextField:
+                hint_text: "Confirm Password"
+                helper_text: "Confirm your Password"
+                helper_text_mode: "on_focus"
+                password: True
+
+            MDRaisedButton:
+                text: "Submit"
+                pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+
+            MDLabel:
+                text: "Already have an account? [ref=register][color=#0000FF]Login[/color][/ref]"
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                halign: 'center'
+                valign: 'center'
+                markup: True
+                on_ref_press: app.login(args[1])
+
+            Widget:
+
+<HomeScreen>:
+    name: 'home'
+
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        MDTopAppBar:
+            title: "VBank Platform"
+            title_align: 'center'
+
+        ScrollView:
+            MDGridLayout:
+                cols: 2
+                spacing: dp(10)
+                padding: dp(10)
+
+                MyCard:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(180)
+
+                    Image:
+                        source: "5523744.jpg"
+                        allow_stretch: True
+                        keep_ratio: False
+                        size_hint: None, None
+                        width: self.parent.width
+                        height: self.parent.height
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                        spacing: dp(10)
+                        padding: dp(20)
+
+                        MDIcon:
+                            icon: "bank-transfer"
+                            halign: 'center'
+                            valign: 'center'
+                            size_hint_x: None
+                            font_size: "48sp" 
+                            theme_text_color: "Custom"
+                            text_color: 0, 0, 1, 0.5
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+                        Widget:
+                            size_hint_y: 2
+
+                        MDLabel:
+                            text: "Send Money"
+                            halign: 'center'
+                            valign: 'center'
+                            theme_text_color: 'Secondary'
+                            font_style: 'Subtitle1'
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+                        Widget:
+
+
+                        MDRaisedButton:
+                            text: "Send Money"
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                            on_release: app.send_money()
+
+                        Widget:
+                            size_hint_y: 1
+
+                MyCard:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(180)
+
+                    Image:
+                        source: "5523744.jpg"
+                        allow_stretch: True
+                        keep_ratio: False
+                        size_hint: None, None
+                        width: self.parent.width
+                        height: self.parent.height
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                        spacing: dp(10)
+                        padding: dp(20)
+
+                        MDIcon:
+                            icon: "credit-card"
+                            halign: 'center'
+                            valign: 'center'
+                            size_hint_x: None
+                            font_size: "48sp" 
+                            theme_text_color: "Custom"
+                            text_color: 0, 0, 1, 0.5
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+                        Widget:
+                            size_hint_y: 2
+
+                        MDLabel:
+                            text: "Pay Bills"
+                            halign: 'center'
+                            valign: 'center'
+                            theme_text_color: 'Secondary'
+                            font_style: 'Subtitle1'
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+                        Widget:
+
+
+                        MDRaisedButton:
+                            text: "Pay Bills"
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                            on_release: app.show_details(root.title)
+
+                        Widget:
+                            size_hint_y: 1
+
+                MyCard:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(180)
+
+                    Image:
+                        source: "5523744.jpg"
+                        allow_stretch: True
+                        keep_ratio: False
+                        size_hint: None, None
+                        width: self.parent.width
+                        height: self.parent.height
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                        spacing: dp(10)
+                        padding: dp(20)
+
+                        MDIcon:
+                            icon: "bank-transfer-out"
+                            halign: 'center'
+                            valign: 'center'
+                            size_hint_x: None
+                            font_size: "48sp" 
+                            theme_text_color: "Custom"
+                            text_color: 0, 0, 1, 0.5
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+                        Widget:
+                            size_hint_y: 2
+
+                        MDLabel:
+                            text: "Withdraw"
+                            halign: 'center'
+                            valign: 'center'
+                            theme_text_color: 'Secondary'
+                            font_style: 'Subtitle1'
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+                        Widget:
+
+
+                        MDRaisedButton:
+                            text: "Withdraw"
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                            on_release: app.show_details()
+
+                        Widget:
+                            size_hint_y: 1
+
+
+                MyCard:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(180)
+
+                    Image:
+                        source: "5523744.jpg"
+                        allow_stretch: True
+                        keep_ratio: False
+                        size_hint: None, None
+                        width: self.parent.width
+                        height: self.parent.height
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                        spacing: dp(10)
+                        padding: dp(20)
+
+                        MDIcon:
+                            icon: "bank-transfer-in"
+                            halign: 'center'
+                            valign: 'center'
+                            size_hint_x: None
+                            font_size: "48sp" 
+                            theme_text_color: "Custom"
+                            text_color: 0, 0, 1, 0.5
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+                        Widget:
+                            size_hint_y: 2
+
+                        MDLabel:
+                            text: "Deposit"
+                            halign: 'center'
+                            valign: 'center'
+                            theme_text_color: 'Secondary'
+                            font_style: 'Subtitle1'
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+
+                        Widget:
+
+
+                        MDRaisedButton:
+                            text: "Deposit"
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                            on_release: app.show_details(root.title)
+
+                        Widget:
+                            size_hint_y: 1
+
+
+                MyCard:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(180)
+
+                    Image:
+                        source: "5523744.jpg"
+                        allow_stretch: True
+                        keep_ratio: False
+                        size_hint: None, None
+                        width: self.parent.width
+                        height: self.parent.height
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                        spacing: dp(10)
+                        padding: dp(20)
+
+                        MDIcon:
+                            icon: "finance"
+                            halign: 'center'
+                            valign: 'center'
+                            size_hint_x: None
+                            font_size: "48sp" 
+                            theme_text_color: "Custom"
+                            text_color: 0, 0, 1, 0.5
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+                        Widget:
+                            size_hint_y: 2
+
+                        MDLabel:
+                            text: "Loan & Saving"
+                            halign: 'center'
+                            valign: 'center'
+                            theme_text_color: 'Secondary'
+                            font_style: 'Subtitle1'
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+
+                        Widget:
+
+
+                        MDRaisedButton:
+                            text: "Loan & Savings"
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                            on_release: app.show_details(root.title)
+
+                        Widget:
+                            size_hint_y: 1
+
+
+                MyCard:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(180)
+
+                    Image:
+                        source: "5523744.jpg"
+                        allow_stretch: True
+                        keep_ratio: False
+                        size_hint: None, None
+                        width: self.parent.width
+                        height: self.parent.height
+
+                    BoxLayout:
+                        orientation: 'vertical'
+                        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                        spacing: dp(10)
+                        padding: dp(20)
+
+                        MDIcon:
+                            icon: "account"
+                            halign: 'center'
+                            valign: 'center'
+                            size_hint_x: None
+                            font_size: "48sp" 
+                            theme_text_color: "Custom"
+                            text_color: 0, 0, 1, 0.5
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+                        Widget:
+                            size_hint_y: 2
+
+                        MDLabel:
+                            text: "Account"
+                            halign: 'center'
+                            valign: 'center'
+                            theme_text_color: 'Secondary'
+                            font_style: 'Subtitle1'
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+
+                        Widget:
+
+
+                        MDRaisedButton:
+                            text: "Account"
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                            on_release: app.show_details(root.title)
+
+                        Widget:
+                            size_hint_y: 1
+
+
+<SendMoney>
+    name: 'send_money'
+
+    MDBoxLayout:
+        orientation:'vertical'
+        spacing: '20dp'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        MDTopAppBar:
+            title: "Send Money"
+            title_align: 'center'
+            left_action_items: [["arrow-left", lambda x: app.back()]]
+
+
+        MDBottomNavigation:
+
+            MDBottomNavigationItem:
+                name: 'send'
+                text: 'Send Money'
+                icon: 'send'
+                MDRelativeLayout:
+                    id: relative_layout
+                    size_hint: 1, None
+                    height: (root.width/16)*9
+                    pos_hint: {'top': 1}
+                    BoxLayout:
+                        orientation:'vertical'
+                        padding: ('20dp')
+                        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                        
+                        MDLabel:
+                            text: "Make transaction easy with VBank"
+                            color: 1 , 0 , 0 , 1
+                            halign: 'center'
+                            valign: 'center'
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+                        MDTextField:
+                            id: account_number
+                            hint_text: "Enter the account number"
+                            width: dp(80)
+                            input_filter: "int"
+                            multiline: False
+                            max_text_length: 15  # Optional: set the maximum length of the input
+                            input_type: "number"
+                            on_text: app.validate_input()
+                            
+
+                        MDTextField:
+                            id: amount_field
+                            hint_text: "Enter amount to send"
+                            input_filter: "int"
+                            multiline: False # Optional: set the maximum length of the input
+                            input_type: "number"
+                            on_text: app.validate_input()
+
+                        MDRaisedButton:
+                            id: submit_button
+                            text: 'Send Money'
+                            color: 0 , 0 , 0 , 1
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                            on_release: app.show_dialog()
+
+
+
+                Widget:
+            MDBottomNavigationItem:
+                name: 'qrcode'
+                text: 'Qr Code'
+                icon: 'qrcode'
+                MDRelativeLayout:
+                    id: relative_layout
+                    size_hint: 1, None
+                    height: (root.width/16)*9
+                    pos_hint: {'top': 1}
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        padding: ('20dp')
+                        
+                        MDLabel:
+                            text: "Make your transaction more faster and trustable by using QR code."
+                            halign: 'center'
+                            size_hint_y: None
+                            height: dp(60)
+
+                        
+                        Widget:
+                            size_hint_y: 3
+
+                        MDLabel:
+                            text: "Receive Money by generating a qr code.Send Money by scanning a qr code"
+                            halign: "center"
+                            color: 0 , 0 , 0 , 0.5
+                        
+                        Widget:
+                            size_hint_y: 1
+
+                        MDFloatLayout:
+                            orientation: 'vertical'
+                            size_hint_y: None
+                            height: "48dp"
+                            spacing: "80dp"
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+
+                            MDRaisedButton:
+                                text: "Receive"
+                                pos_hint: {'center_x': 0.7,'center_y': 0.5}
+                                on_release: app.qr_receive_money()
+
+                            Widget:
+                                
+
+                            MDRaisedButton:
+                                text: "Send"
+                                pos_hint: {'center_x': 0.3,'center_y': 0.5}
+                                on_release: app.qr_send_money()
+
+                Widget:
+
+<CompleteTransaction>
+    name: 'complete_transaction'
+
+    MDFloatLayout:
+        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            padding: "10dp"
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+            MDCard:
+                orientation: "vertical"
+                size_hint: None, None
+                size: "280dp", "280dp"
+                pos_hint: {"center_x": .5, "center_y": .5}
+
+                MDLabel:
+                    text: "Transaction Details"
+                    font_style: "H6"
+                    halign: "center"
+                    valign: "center"
+
+                MDLabel:
+                    text: "Name of the Receiver: John Doe"
+                    halign: "center"
+                    padding: "8dp"
+
+                MDLabel:
+                    text: "Amount Sent: $1000"
+                    halign: "center"
+                    padding: "8dp"
+
+                MDLabel:
+                    text: "Transaction Code: ABC123XYZ"
+                    halign: "center"
+                    padding: "8dp"
+
+                MDLabel:
+                    text: "Date Sent: 2024-03-12"
+                    halign: "center"
+                    padding: "8dp"
+
+                Widget:
+
+
+                MDLabel:
+                    text: "Your transaction was successfully completed"
+                    color: "green"
+                    halign: "center"
+                    padding: "8dp"
+
+                Widget:
+
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: "48dp"
+                    spacing: "80dp"
+                    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                    MDIconButton:
+                        icon: "receipt"
+                        text: "Download Receipt"
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 0, 0.6
+                        font_size: dp(22)
+                        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+                        on_release: app.download_receipt()
+                    MDRaisedButton:
+                        text: "Exit"
+                        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                        on_release: app.exit_successfully()
+
+<QRReceiveMoney>
+    name: 'qr_receive_money'
+
+    MDBoxLayout:
+        orientation:'vertical'
+
+        MDTopAppBar:
+            left_action_items: [["arrow-left", lambda x: app.back_to_send_money()]]
+
+        Widget:
+
+        
+        MDCard:
+            size_hint: None, None
+            size: "200dp", "200dp"
+            pos_hint: {"center_x": 0.5, 'center_y': 0.5}
+            elevation: 10
+            md_bg_color: app.theme_cls.bg_dark
+            padding: "8dp"
+            Image:
+                id: qr_code_image
+
+        Widget:
+
+<QRSendMoney>
+    name: 'qr_send_money'
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        left_action_items: [["arrow-left", lambda x: app.back_to_send_money()]]
+
+        MDCard:
+            size_hint: None, None
+            size: "300dp", "300dp"
+            pos_hint: {"center_x": 0.5}
+            elevation: 10
+            padding: "8dp"
+            Camera:
+                id: camera
+                resolution: (640, 480)
+                play: True
