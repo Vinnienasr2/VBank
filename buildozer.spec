@@ -37,7 +37,7 @@ version = 0.1.0
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy,https://github.com/kivymd/KivyMD/archive/master.zip,materialyoucolor,exceptiongroup,asyncgui,asynckivy,qrcode,json,pillow
+requirements = python3,kivy,kivymd,materialyoucolor,exceptiongroup,asyncgui,asynckivy,qrcode,json,pillow
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
